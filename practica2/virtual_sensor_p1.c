@@ -10,6 +10,7 @@ float random_value(float min,float max){
 void adjust_temperature(float temp_min, float temp_max){
 
     float num=random_value(-20,50);
+    printf("la temperatura es: %.2f",num);
     if(num<temp_min){
         printf("ajustando la temperatura a lo minimo");
     }
