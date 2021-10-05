@@ -1,23 +1,23 @@
 #include "contiki.h"
 #include "sys/etimer.h"
 #include <stdio.h>
-#include "virtual_sensor_p1.h"
+#include "virtual_sensorp1.h"
 
-PROCESS(practica_1,"sensor reading node");
-AUTOSTART_PROCESSES(&practica_1);
+PROCESS(sensor_node,"sensor reading node");
+AUTOSTART_PROCESSES(&sensor_node);
 
 static struct etimer timer;
 
-PROCESS_THREAD(practica_1,ev,data){
+PROCESS_THREAD(sensor_node,ev,data){
     PROCESS_BEGIN();
 
     etimer_set(&timer,3*CLOCK_SECOND);
     while (1){
        PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&timer));
-       printf("read temp");
 
-        adjust_temperature(21,27);
-        
+       float temp=read_temperature();
+       printf("temperature reading: %.2fºC\n",temp);
+
        etimer_reset(&timer);
     }
     
