@@ -16,7 +16,7 @@ PROCESS_THREAD(sensor_node,ev,data){
        PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&timer));
 
        float temp=read_temperature();
-       printf("temperature reading: %.2fºC\n",temp);
+       printf("la temperatura es de: %.2fºC\n",temp);
 
        etimer_reset(&timer);
     }
